@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerList() {
         rvCategory.setLayoutManager(new LinearLayoutManager(this));
-        ListPresidentAdapter listPresidentAdapter = new ListPresidentAdapter(this);
+        ListAdapter listPresidentAdapter = new ListAdapter(this);
         listPresidentAdapter.setListPresident(list);
         rvCategory.setAdapter(listPresidentAdapter);
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerGrid() {
         rvCategory.setLayoutManager(new GridLayoutManager(this, 2));
-        GridPresidentAdapter gridPresidentAdapter = new GridPresidentAdapter(this);
+        GridAdapter gridPresidentAdapter = new GridAdapter(this);
         gridPresidentAdapter.setListPresident(list);
         rvCategory.setAdapter(gridPresidentAdapter);
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerCardView() {
         rvCategory.setLayoutManager(new LinearLayoutManager(this));
-        CardViewPresidentAdapter cardViewPresidentAdapter = new CardViewPresidentAdapter(this);
+        CardViewAdapter cardViewPresidentAdapter = new CardViewAdapter(this);
         cardViewPresidentAdapter.setListPresident(list);
         rvCategory.setAdapter(cardViewPresidentAdapter);
     }

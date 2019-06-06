@@ -13,7 +13,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class GridPresidentAdapter extends RecyclerView.Adapter<GridPresidentAdapter.GridViewHolder> {
+public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder> {
     private Context context;
     private ArrayList<President> listPresident;
 
@@ -25,7 +25,7 @@ public class GridPresidentAdapter extends RecyclerView.Adapter<GridPresidentAdap
         this.listPresident = listPresident;
     }
 
-    public GridPresidentAdapter(Context context) {
+    public GridAdapter(Context context) {
         this.context = context;
     }
 

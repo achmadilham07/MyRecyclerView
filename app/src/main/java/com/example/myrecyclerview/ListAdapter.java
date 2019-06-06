@@ -14,7 +14,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class ListPresidentAdapter extends RecyclerView.Adapter<ListPresidentAdapter.CategoryViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CategoryViewHolder> {
     private Context context;
     private ArrayList<President> listPresident;
 
@@ -26,7 +26,7 @@ public class ListPresidentAdapter extends RecyclerView.Adapter<ListPresidentAdap
         this.listPresident = listPresident;
     }
 
-    ListPresidentAdapter(Context context) {
+    ListAdapter(Context context) {
         this.context = context;
     }
 
