@@ -15,14 +15,14 @@ import java.util.ArrayList;
 
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder> {
     private Context context;
-    private ArrayList<President> listPresident;
+    private ArrayList<Pokemon> listPokemon;
 
-    private ArrayList<President> getListPresident() {
-        return listPresident;
+    private ArrayList<Pokemon> getListPokemon() {
+        return listPokemon;
     }
 
-    public void setListPresident(ArrayList<President> listPresident) {
-        this.listPresident = listPresident;
+    public void setListPokemon(ArrayList<Pokemon> listPokemon) {
+        this.listPokemon = listPokemon;
     }
 
     public GridAdapter(Context context) {
@@ -39,14 +39,14 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
     @Override
     public void onBindViewHolder(@NonNull GridViewHolder holder, int position) {
         Glide.with(context)
-                .load(getListPresident().get(position).getPhoto())
-                .apply(new RequestOptions().override(350, 550))
+                .load(getListPokemon().get(position).getImage())
+                .apply(new RequestOptions().override(350, 350))
                 .into(holder.imgPhoto);
     }
 
     @Override
     public int getItemCount() {
-        return getListPresident().size();
+        return getListPokemon().size();
     }
 
     class GridViewHolder extends RecyclerView.ViewHolder {

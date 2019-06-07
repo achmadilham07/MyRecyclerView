@@ -18,12 +18,12 @@ import java.util.ArrayList;
 
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardViewViewHolder>{
     private Context context;
-    private ArrayList<President> listPresident;
-    private ArrayList<President> getListPresident() {
-        return listPresident;
+    private ArrayList<Pokemon> listPokemon;
+    private ArrayList<Pokemon> getListPokemon() {
+        return listPokemon;
     }
-    public void setListPresident(ArrayList<President> listPresident) {
-        this.listPresident = listPresident;
+    public void setListPokemon(ArrayList<Pokemon> listPokemon) {
+        this.listPokemon = listPokemon;
     }
     public CardViewAdapter(Context context) {
         this.context = context;
@@ -38,43 +38,30 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
 
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder cardViewViewHolder, int i) {
-        President p = getListPresident().get(i);
+        Pokemon p = getListPokemon().get(i);
         Glide.with(context)
-                .load(p.getPhoto())
-                .apply(new RequestOptions().override(350, 550))
+                .load(p.getThumbnail())
+                .apply(new RequestOptions().override(350, 350))
                 .into(cardViewViewHolder.imgPhoto);
         cardViewViewHolder.tvName.setText(p.getName());
-        cardViewViewHolder.tvRemarks.setText(p.getRemarks());
-        cardViewViewHolder.btnFavorite.setOnClickListener(new CustomOnItemClickListener(i, new CustomOnItemClickListener.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(View view, int position) {
-                Toast.makeText(context, "Favorite "+getListPresident().get(position).getName(), Toast.LENGTH_SHORT).show();
-            }
-        }));
-        cardViewViewHolder.btnShare.setOnClickListener(new CustomOnItemClickListener(i, new CustomOnItemClickListener.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(View view, int position) {
-                Toast.makeText(context, "Share "+getListPresident().get(position).getName(), Toast.LENGTH_SHORT).show();
-            }
-        }));
+        cardViewViewHolder.tvAtt.setText(p.getAttack());
+        cardViewViewHolder.tvDef.setText(p.getDef());
     }
 
     @Override
     public int getItemCount() {
-        return getListPresident().size();
+        return getListPokemon().size();
     }
 
     class CardViewViewHolder extends RecyclerView.ViewHolder{
         ImageView imgPhoto;
-        TextView tvName, tvRemarks;
-        Button btnFavorite, btnShare;
+        TextView tvName, tvAtt, tvDef;
         CardViewViewHolder(View itemView) {
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
-            tvName = itemView.findViewById(R.id.tv_item_name);
-            tvRemarks = itemView.findViewById(R.id.tv_item_remarks);
-            btnFavorite = itemView.findViewById(R.id.btn_set_favorite);
-            btnShare = itemView.findViewById(R.id.btn_set_share);
+            tvName = itemView.findViewById(R.id.item_name);
+            tvAtt = itemView.findViewById(R.id.item_att);
+            tvDef = itemView.findViewById(R.id.item_def);
         }
     }
 }

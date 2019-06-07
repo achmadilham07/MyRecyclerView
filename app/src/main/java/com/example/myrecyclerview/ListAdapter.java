@@ -16,14 +16,14 @@ import java.util.ArrayList;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CategoryViewHolder> {
     private Context context;
-    private ArrayList<President> listPresident;
+    private ArrayList<Pokemon> listPokemon;
 
-    private ArrayList<President> getListPresident() {
-        return listPresident;
+    private ArrayList<Pokemon> getListPokemon() {
+        return listPokemon;
     }
 
-    void setListPresident(ArrayList<President> listPresident) {
-        this.listPresident = listPresident;
+    void setListPokemon(ArrayList<Pokemon> listPokemon) {
+        this.listPokemon = listPokemon;
     }
 
     ListAdapter(Context context) {
@@ -39,29 +39,26 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.CategoryViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder categoryViewHolder, int position) {
-        categoryViewHolder.tvName.setText(getListPresident().get(position).getName());
-        categoryViewHolder.tvRemarks.setText(getListPresident().get(position).getRemarks());
+        categoryViewHolder.tvName.setText(getListPokemon().get(position).getName());
 
         Glide.with(context)
-                .load(getListPresident().get(position).getPhoto())
-                .apply(new RequestOptions().override(55, 55))
+                .load(getListPokemon().get(position).getThumbnail())
+                .apply(new RequestOptions().override(65, 65))
                 .into(categoryViewHolder.imgPhoto);
     }
 
     @Override
     public int getItemCount() {
-        return getListPresident().size();
+        return getListPokemon().size();
     }
 
     class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
-        TextView tvRemarks;
         ImageView imgPhoto;
 
         CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tv_item_name);
-            tvRemarks = itemView.findViewById(R.id.tv_item_remarks);
+            tvName = itemView.findViewById(R.id.item_name);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
         }
     }

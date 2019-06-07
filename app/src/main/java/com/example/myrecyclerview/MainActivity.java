@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rvCategory;
-    private ArrayList<President> list;
+    private ArrayList<Pokemon> list;
     final String STATE_TITLE = "state_string";
     final String STATE_LIST = "state_list";
     final String STATE_MODE = "state_mode";
@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             setActionBarTitle("Mode List");
-            list.addAll(PresidentData.getListData());
+            list.addAll(PokemonData.getListData());
             showRecyclerList();
             mode = R.id.action_list;
 
         } else {
             String stateTitle = savedInstanceState.getString(STATE_TITLE);
-            ArrayList<President> stateList = savedInstanceState.getParcelableArrayList(STATE_LIST);
+            ArrayList<Pokemon> stateList = savedInstanceState.getParcelableArrayList(STATE_LIST);
             int stateMode = savedInstanceState.getInt(STATE_MODE);
             setActionBarTitle(stateTitle);
             list.addAll(stateList);
@@ -46,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void showSelectedPresident(President president) {
-        Toast.makeText(this, "Kamu memilih " + president.getName(), Toast.LENGTH_SHORT).show();
+    private void showSelectedPresident(Pokemon pokemon) {
+        Toast.makeText(this, "Kamu memilih " + pokemon.getName(), Toast.LENGTH_SHORT).show();
     }
 
     private void showRecyclerList() {
         rvCategory.setLayoutManager(new LinearLayoutManager(this));
         ListAdapter listPresidentAdapter = new ListAdapter(this);
-        listPresidentAdapter.setListPresident(list);
+        listPresidentAdapter.setListPokemon(list);
         rvCategory.setAdapter(listPresidentAdapter);
 
         ItemClickSupport.addTo(rvCategory).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private void showRecyclerGrid() {
         rvCategory.setLayoutManager(new GridLayoutManager(this, 2));
         GridAdapter gridPresidentAdapter = new GridAdapter(this);
-        gridPresidentAdapter.setListPresident(list);
+        gridPresidentAdapter.setListPokemon(list);
         rvCategory.setAdapter(gridPresidentAdapter);
 
         ItemClickSupport.addTo(rvCategory).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private void showRecyclerCardView() {
         rvCategory.setLayoutManager(new LinearLayoutManager(this));
         CardViewAdapter cardViewPresidentAdapter = new CardViewAdapter(this);
-        cardViewPresidentAdapter.setListPresident(list);
+        cardViewPresidentAdapter.setListPokemon(list);
         rvCategory.setAdapter(cardViewPresidentAdapter);
     }
 
